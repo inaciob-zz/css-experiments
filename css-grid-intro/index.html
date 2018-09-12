@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>CSS Grid Intro</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:700" rel="stylesheet">
+	<script src="js/app.js"></script>
+</head>
+<body>
+	<h1 class="main-heading centered-text">Match the <span>C</span><span>o</span><span>l</span><span>o</span><span>u</span><span>r</span><span>s</span></h1>
+	<div class="row">
+		<button class="done btn">I&#39;m Done</button>
+	</div>
+	<div class="grid-container">
+		<div id="red" class="one red grid-item" draggable="true"></div>
+		<div id="blue-border" class="two grid-item"></div>
+		<div id="green" class="three green grid-item" draggable="true"></div>
+		<div id="green-border" class="four grid-item"></div>
+		<div id="blue" class="five blue grid-item" draggable="true"></div>
+		<div id="red-border" class="six grid-item"></div>
+	</div>
+	<!-- Start success msg -->
+	<div class="success outcome centered-text hidden">
+		<p>Great job! You matched all of the colours correctly <span class="close">&times;</span></p>
+	</div>
+	<!-- End success msg -->
+	<!-- Start try again msg -->
+	<div class="try-again outcome centered-text hidden">
+		<p>Hey there - It looks like some colours are still missing their matches - keep trying! <span class="close">&times;</span></p>
+	</div>
+	<!-- End try again msg -->
+</body>
+</html>
