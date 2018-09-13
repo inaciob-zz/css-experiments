@@ -1,14 +1,13 @@
 html, body {
 	font-family: 'Nunito', sans-serif;
 	overflow-x: hidden;
+	width: 100vw;
 }
 
 body {
 	background-color: #E2EAFF;
-}
-
-.hidden {
-	display: none;
+	margin: 0;
+	padding: 0;
 }
 
 .main-heading {
@@ -134,17 +133,24 @@ body {
 	padding: 16px;
 	position: absolute;
 	top: 0;
+	transition: all 0.5s ease;
 	width: 100vw;
 }
 
 .success {
 	background-color: #c3e6cb;
 	color: #155724;
+	opacity: 1;
 }
 
 .try-again {
 	background-color: #ffeeba;
 	color: #856404;
+	opacity: 1;
+}
+
+.hidden {
+	opacity: 0;
 }
 
 .close {
@@ -154,4 +160,5 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
+	z-index: 1;
 }
