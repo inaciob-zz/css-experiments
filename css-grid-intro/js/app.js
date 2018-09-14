@@ -1,8 +1,9 @@
 var numBlocksMatched = 0;
+var allBlocksMatched = false;
 
 document.addEventListener('DOMContentLoaded', function () {
 	var colourBlocks = document.querySelectorAll('#red, #green, #blue');
-	var matchingBlocks = document.querySelectorAll('#red-border, #blue-border, #green-border');
+	var matchingBlocks = document.querySelectorAll('.colour-container');
 
 	for(var i=0; i < colourBlocks.length; i++) {
 		colourBlocks[i].addEventListener('dragover', function(e) {
@@ -26,6 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			if(data == e.target.id.substr(0, e.target.id.indexOf('-'))) {
 				// Matching colour block
 				numBlocksMatched++;
+				if(numBlocksMatched > 3) {
+					// This exists as part of a bug fix
+					numBlocksMatched = 3;
+				}
+			}
+			else {
+				return false;
 			}
 		});
 	}
@@ -39,7 +47,25 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function showOutcome() {
-	if(numBlocksMatched === 3) {
+	var matchingColourBlocks = document.querySelectorAll('.colour-container');
+	var numMatches = 0;
+
+	for(var i=0; i < matchingColourBlocks.length; i++) {
+		var currColourContainer = matchingColourBlocks[i];
+		if(currColourContainer.childNodes.length === 1 && currColourContainer.childNodes[0].id == currColourContainer.id.substr(0, currColourContainer.id.indexOf('-'))) {
+			numMatches++;
+		}
+	}
+
+	if(numMatches === 3) {
+		allBlocksMatched = true;
+	}
+	else {
+		allBlocksMatched = false;
+	}
+
+	// The purpose of this check is to ensure all colour-container elements contain the single correct matching draggable block
+	if(numBlocksMatched === 3 && allBlocksMatched) {
 		// Yay! All colour blocks have been successfully matched
 		if(!document.querySelector('.try-again').classList.contains('hidden')) {
 			document.querySelector('.try-again').classList.add('hidden');
